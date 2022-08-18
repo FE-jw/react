@@ -1,21 +1,19 @@
 import React from 'react';
 import { Route, Routes, Link } from 'react-router-dom';
-import Home from './pages/Home';
-import About from './pages/About';
-import PostRoute from './pages/PostRoute';
+import StyledComponents from './pages/StyledComponents';
 
 const Container = () => {
 	return (
 		<section className="container">
 			<div className="content">
-				<Link to="react/">홈</Link>
-				<Link to="react/about">소개</Link>
-				<Link to="react/route">라우터 소개</Link>
+				<nav className="nav-wrap">
+					<ul className="nav">
+						<li><Link to="react/styled-components">styled components</Link></li>
+					</ul>
+				</nav>
 
 				<Routes>
-					<Route path="react/" element={<Home />} />
-					<Route path="react/about" element={<About />} />
-					<Route path="react/route" element={<PostRoute />} />
+					<Route path="react/styled-components" element={<StyledComponents />} />
 				</Routes>
 			</div>
 		</section>

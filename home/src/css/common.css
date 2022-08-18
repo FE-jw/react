@@ -1,5 +1,5 @@
 @import "https://cdn.jsdelivr.net/gh/fe-jw/fe-jw.github.io/css/font.css";
-/*! Author: JW 2022-08-17 */
+/*! Author: JW 2022-08-18 */
 * {
   margin: 0;
   padding: 0;
@@ -15,7 +15,7 @@ body {
   height: 100%;
   line-height: 1.2;
   font-family: "Roboto-light", "NanumSquareL", sans-serif;
-  font-size: 2rem;
+  font-size: 1.6rem;
   color: #fff;
   background-color: #141414;
 }
@@ -55,9 +55,10 @@ code {
   tab-size: 6;
 }
 
-#root {
+.react-wrap {
   display: flex;
   flex-direction: column;
+  min-width: 320px;
   height: 100%;
   min-height: 900px;
 }
@@ -96,8 +97,26 @@ code {
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
-  padding: 60px 20px;
+  padding: 50px 20px;
   box-sizing: border-box;
+}
+.container .nav-wrap {
+  margin-bottom: 20px;
+}
+.container .nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.container .nav a {
+  display: inline-block;
+  padding: 5px;
+  border-bottom: 1px solid rgba(97, 218, 251, 0.3);
+  transition: all 0.2s;
+}
+.container .nav a:hover {
+  color: #282c34;
+  background-color: #61dafb;
 }
 
 .footer-wrap {
