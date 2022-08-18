@@ -20,12 +20,12 @@ yarn add [module]
 	```
 - index.js 수정
 	- BrowserRouter 추가
-		```js
+		```
 		import { BrowserRouter } from 'react-router-dom';
 		```
 
 	- BrowserRouter 감싸기
-		```js
+		```
 		<React.StrictMode>
 			<BrowserRouter>
 				<App />
@@ -34,11 +34,11 @@ yarn add [module]
 		```
 
 - Link, Routes, Route 추가
-	```js
+	```
 	import { Route, Routes, Link } from 'react-router-dom';
 	```
 	
-	```js
+	```
 	<Link to="/">Home</Link>
 	<Link to="/about">About</Link>
 
@@ -50,12 +50,12 @@ yarn add [module]
 
 ### **styled-components**
 - styled-components 추가
-	```js
+	```
 	import styled from 'styled-components';
 	```
 
 - 기본
-	```js
+	```
 	const MyComponent = () => {
 		const StyledButton = styled.button`
 			width:250px;
@@ -73,7 +73,7 @@ yarn add [module]
 	```
 
 - hover 적용
-	```js
+	```
 	const StyledButton = styled.button`
 		...
 		&:hover	{
@@ -83,7 +83,7 @@ yarn add [module]
 	```
 
 - media query 적용
-	```js
+	```
 	const StyledButton = styled.button`
 		...
 		@media all and (min-width: 800px) {
