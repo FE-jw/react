@@ -105,9 +105,11 @@ yarn add [module]
 	```
 	import React, { useState } from 'react';
 	```
+
 	```
 	const [cnt, setCnt] = useState(0);
 	```
+	
 	```
 	<span>{cnt}</span>
 	```
