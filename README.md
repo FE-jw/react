@@ -14,17 +14,18 @@ yarn add [module]
 ```
 
 ### **Router _(react-router-dom v6.3.0 기준)_**
-- 모듈 설치
+* 모듈 설치
 	```
 	yarn add react-router-dom
 	```
-- index.js 수정
-	- BrowserRouter 추가
+
+* index.js 수정
+	* BrowserRouter 추가
 		```
 		import { BrowserRouter } from 'react-router-dom';
 		```
 
-	- BrowserRouter 감싸기
+	* BrowserRouter 감싸기
 		```
 		<React.StrictMode>
 			<BrowserRouter>
@@ -33,7 +34,7 @@ yarn add [module]
 		</React.StrictMode>
 		```
 
-- Link, Routes, Route 추가
+* Link, Routes, Route 추가
 	```
 	import { Route, Routes, Link } from 'react-router-dom';
 	```
@@ -49,12 +50,17 @@ yarn add [module]
 	```
 
 ### **styled-components**
-- styled-components 추가
+* 모듈 설치
+	```
+	yarn add styled-components
+	```
+
+* styled-components 추가
 	```
 	import styled from 'styled-components';
 	```
 
-- 기본
+* 기본
 	```
 	const MyComponent = () => {
 		const StyledButton = styled.button`
@@ -72,7 +78,7 @@ yarn add [module]
 	};
 	```
 
-- hover 적용
+* hover 적용
 	```
 	const StyledButton = styled.button`
 		...
@@ -82,7 +88,7 @@ yarn add [module]
 	`;
 	```
 
-- media query 적용
+* media query 적용
 	```
 	const StyledButton = styled.button`
 		...
@@ -93,3 +99,23 @@ yarn add [module]
 		}
 	`;
 	```
+
+### **Hook**
+* useState
+	```
+	import React, { useState } from 'react';
+	```
+	```
+	const [cnt, setCnt] = useState(0);
+	```
+	```
+	<span>{cnt}</span>
+	```
+
+#### **제목 못정함**
+```
+<button type="button" onClick={setCnt(cnt + 1)}>틀린 방법</button>
+<button type="button" onClick={() => setCnt(cnt + 1)}>옳은 방법</button>
+
+`string 사이에 ${변수} 삽입하기`
+```
