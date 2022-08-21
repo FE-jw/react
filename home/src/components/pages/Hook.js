@@ -36,9 +36,11 @@ const Hook = () => {
 					<StyledButton type="button" onClick={() => setCnt(cnt + 10)}>+10</StyledButton>
 				</div>
 			</StyledLi>
+			{/*
 			<StyledLi>
 				Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure, veniam.
 			</StyledLi>
+			*/}
 		</ul>
 	);
 };

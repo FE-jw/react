@@ -100,6 +100,21 @@ yarn add [module]
 	`;
 	```
 
+* 동위 선택
+	```
+	const EditBtn = styled.button`
+		...
+	`;
+
+	const DeleteBtn = styled.button`
+		...
+
+		${EditBtn} + &	{
+			margin-left:10px;
+		}
+	`;
+	```
+
 ### **Hook**
 * useState
 	```
@@ -113,6 +128,23 @@ yarn add [module]
 	```
 	<span>{cnt}</span>
 	```
+
+	* 배열 추가하기
+		```
+		const [data, setData] = useState(
+			[
+				{todo: '할 일 1'},
+				{todo: '할 일 2'}
+			]
+		);
+
+		setData(
+			[
+				...data,
+				{todo: val}
+			]
+		);
+		```
 
 #### **제목 못정함**
 ```
