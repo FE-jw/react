@@ -87,19 +87,17 @@ const Todo = () => {
 		background-color:green;
 	`;
 
-	const [TodoData, setTodoData] = useState(
-		[
-			{
-				todo: '추가하기 버튼 비활성화 추가'
-			},
-			{
-				todo: '수정 버튼 클릭 시 input으로 변경'
-			},
-			{
-				todo: '삭제 버튼 클릭 시 리스트 삭제'
-			}
-		]
-	);
+	const [TodoData, setTodoData] = useState([
+		{
+			todo: '추가하기 버튼 비활성화 추가'
+		},
+		{
+			todo: '수정 버튼 클릭 시 input으로 변경'
+		},
+		{
+			todo: '삭제 버튼 클릭 시 리스트 삭제'
+		}
+	]);
 
 	//추가할 텍스트 선택
 	const dataInput = useRef();
@@ -107,7 +105,10 @@ const Todo = () => {
 	//할 일 추가
 	const addData = function(val){
 		if(val.trim() !== ''){
-			setTodoData([...TodoData, {todo: val}]);
+			setTodoData([
+				...TodoData,
+				{todo: val}
+			]);
 		}else{
 			alert('내용을 입력해주세요.');
 			dataInput.current.focus();
