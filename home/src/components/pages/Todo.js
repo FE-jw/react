@@ -84,12 +84,22 @@ const Todo = () => {
 		font-size:14px;
 		font-weight:bold;
 		color:#fff;
-		background-color:green;
+
+		&.btn_off	{
+			background-color:#ccc;
+		}
+
+		&.btn_on	{
+			background-color:mediumseagreen;
+		}
 	`;
 
 	const [TodoData, setTodoData] = useState([
 		{
 			todo: '추가하기 버튼 비활성화 추가'
+		},
+		{
+			todo: '재렌더링 막을 방법 찾기'
 		},
 		{
 			todo: '수정 버튼 클릭 시 input으로 변경'
@@ -103,7 +113,7 @@ const Todo = () => {
 	const dataInput = useRef();
 
 	//할 일 추가
-	const addData = function(val){
+	const addData = val => {
 		if(val.trim() !== ''){
 			setTodoData([
 				...TodoData,
@@ -112,6 +122,16 @@ const Todo = () => {
 		}else{
 			alert('내용을 입력해주세요.');
 			dataInput.current.focus();
+		}
+	};
+
+	const [inpVal, setInpVal] = useState(false);
+
+	const toggleBtn = e => {
+		if(e.target.value.trim() !== ''){
+			setInpVal(true);
+		}else{
+			setInpVal(false);
 		}
 	};
 
@@ -130,9 +150,9 @@ const Todo = () => {
 				}
 				<TodoItem>
 					<TodoText>
-						<TodoInput type="text" placeholder="+ 할 일 추가" ref={dataInput} />
+						<TodoInput type="text" placeholder="+ 할 일 추가" ref={dataInput} onChange={toggleBtn} />
 					</TodoText>
-					<AddBtn onClick={() => addData(dataInput.current.value)}>추가</AddBtn>
+					<AddBtn className={inpVal ? 'btn_on' : 'btn_off'} onClick={() => addData(dataInput.current.value)}>추가</AddBtn>
 				</TodoItem>
 			</TodoList>
 		</TodoWrap>

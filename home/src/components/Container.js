@@ -10,16 +10,17 @@ const Container = () => {
 			<div className="content">
 				<nav className="nav-wrap">
 					<ul className="nav">
-						<li><NavLink to="react/styled-components">Styled Components</NavLink></li>
-						<li><NavLink to="react/hook">Hook</NavLink></li>
-						<li><NavLink to="react/todo">Todolist</NavLink></li>
+						<li><NavLink to="react/home/styled-components">Styled Components</NavLink></li>
+						<li><NavLink to="react/home/hook">Hook</NavLink></li>
+						<li><NavLink to="react/home/todo">Todolist</NavLink></li>
 					</ul>
 				</nav>
 
 				<Routes>
-					<Route path="react/styled-components" element={<StyledComponents />} />
-					<Route path="react/hook" element={<Hook />} />
-					<Route path="react/todo" element={<Todo />} />
+					<Route path="react/home/styled-components" element={<StyledComponents />} />
+					<Route path="react/home/hook" element={<Hook />} />
+					<Route path="react/home/todo" element={<Todo />} />
+					<Route path="react/home" element={<Todo />} />
 				</Routes>
 			</div>
 		</section>
