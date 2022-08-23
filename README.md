@@ -142,6 +142,9 @@ yarn add [module]
 		]);
 		```
 
+### **[React.memo](https://ko.reactjs.org/docs/react-api.html#reactmemo)**
+렌더링 결과를 메모이징(Memoizing)함으로써 불필요한 리렌더링을 건너뛴다.
+
 #### **제목 못정함**
 ```
 <button type="button" onClick={setCnt(cnt + 1)}>틀린 방법</button>

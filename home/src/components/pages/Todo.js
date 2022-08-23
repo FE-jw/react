@@ -3,7 +3,8 @@ import styled from 'styled-components';
 
 const Todo = () => {
 	const TodoWrap = styled.div`
-		width:500px;
+		width:100%;
+		max-width:500px;
 		margin:0 auto;
 		padding:10px;
 		border-radius:4px;
@@ -96,16 +97,16 @@ const Todo = () => {
 
 	const [TodoData, setTodoData] = useState([
 		{
-			todo: '추가하기 버튼 비활성화 추가'
-		},
-		{
-			todo: '재렌더링 막을 방법 찾기'
+			todo: '수정, 삭제 기능'
 		},
 		{
 			todo: '수정 버튼 클릭 시 input으로 변경'
 		},
 		{
 			todo: '삭제 버튼 클릭 시 리스트 삭제'
+		},
+		{
+			todo: '추가하기 버튼 활성화될 때 리렌더링 되는 문제 확인'
 		}
 	]);
 
@@ -125,13 +126,25 @@ const Todo = () => {
 		}
 	};
 
-	const [inpVal, setInpVal] = useState(false);
+	//할 일 삭제
+	const deleteData = idx => {
+		console.log(idx);
+		setTodoData(TodoData.filter(todos => todos[idx] !== idx));
+	};
 
-	const toggleBtn = e => {
-		if(e.target.value.trim() !== ''){
-			setInpVal(true);
+	//할 일 수정
+	const editData = idx => {
+		console.log(idx);
+	};
+
+	const [isActive, setIsActive] = useState(false);
+
+	const toggleBtn = (e) => {
+		// console.log(e.target.value);
+		if(e.target.value.trim() === ''){
+			setIsActive(false);
 		}else{
-			setInpVal(false);
+			setIsActive(true);
 		}
 	};
 
@@ -143,16 +156,16 @@ const Todo = () => {
 					TodoData.map((val, idx) => (
 						<TodoItem key={idx}>
 							<TodoText>{val.todo}</TodoText>
-							<EditBtn>수정</EditBtn>
-							<DeleteBtn>삭제</DeleteBtn>
+							<EditBtn onClick={() => editData(idx)}>수정</EditBtn>
+							<DeleteBtn onClick={() => deleteData(idx)}>삭제</DeleteBtn>
 						</TodoItem>
 					))
 				}
 				<TodoItem>
 					<TodoText>
-						<TodoInput type="text" placeholder="+ 할 일 추가" ref={dataInput} onChange={toggleBtn} />
+						<TodoInput type="text" placeholder="+ 할 일 추가" ref={dataInput} onChange={(e) => toggleBtn(e)} />
 					</TodoText>
-					<AddBtn className={inpVal ? 'btn_on' : 'btn_off'} onClick={() => addData(dataInput.current.value)}>추가</AddBtn>
+					<AddBtn className={isActive ? 'btn_on' : 'btn_off'} onClick={() => addData(dataInput.current.value)}>추가</AddBtn>
 				</TodoItem>
 			</TodoList>
 		</TodoWrap>
