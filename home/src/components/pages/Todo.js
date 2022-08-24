@@ -26,7 +26,7 @@ const Todo = () => {
 		display:flex;
 		justify-content:space-between;
 		align-items:center;
-		padding:10px 0;
+		padding:3px 0;
 		font-size:16px;
 		color:#000;
 
@@ -36,7 +36,10 @@ const Todo = () => {
 	`;
 
 	const TodoText = styled.div`
+		display:flex;
 		flex:1;
+		align-items:center;
+		height:40px;
 		font-size:16px;
 		overflow:hidden;
 		text-overflow:ellipsis;
@@ -48,7 +51,7 @@ const Todo = () => {
 		width:100%;
 		height:40px;
 		border:0;
-		// border-bottom:1px solid #999;
+		font-family:inherit;
 		font-size:16px;
 		color:#000;
 		box-sizing:border-box;
@@ -97,15 +100,11 @@ const Todo = () => {
 
 	const [TodoData, setTodoData] = useState([
 		{
-			todo: '수정, 삭제 기능'
-		},
-		{
+			id: 0,
 			todo: '수정 버튼 클릭 시 input으로 변경'
 		},
 		{
-			todo: '삭제 버튼 클릭 시 리스트 삭제'
-		},
-		{
+			id: 1,
 			todo: '추가하기 버튼 활성화될 때 리렌더링 되는 문제 확인'
 		}
 	]);
@@ -118,7 +117,10 @@ const Todo = () => {
 		if(val.trim() !== ''){
 			setTodoData([
 				...TodoData,
-				{todo: val}
+				{
+					id: TodoData.length,
+					todo: val
+				}
 			]);
 		}else{
 			alert('내용을 입력해주세요.');
@@ -128,16 +130,18 @@ const Todo = () => {
 
 	//할 일 삭제
 	const deleteData = idx => {
-		console.log(idx);
-		setTodoData(TodoData.filter(todos => todos[idx] !== idx));
+		setTodoData(
+			TodoData.filter(todos => todos.id !== idx)
+		);
 	};
 
 	//할 일 수정
+	const [isEdit, setIsEdit] = useState(false);
 	const editData = idx => {
-		console.log(idx);
+		setIsEdit(true);
 	};
 
-	const [isActive, setIsActive] = useState(false);
+	const [isActive, setIsActive] = useState(true);
 
 	const toggleBtn = (e) => {
 		// console.log(e.target.value);
@@ -155,9 +159,11 @@ const Todo = () => {
 				{
 					TodoData.map((val, idx) => (
 						<TodoItem key={idx}>
-							<TodoText>{val.todo}</TodoText>
+							<TodoText>
+								{isEdit ? <TodoInput type="text" placeholder="+ 할 일 추가" value={val.todo} /> : val.todo}
+							</TodoText>
 							<EditBtn onClick={() => editData(idx)}>수정</EditBtn>
-							<DeleteBtn onClick={() => deleteData(idx)}>삭제</DeleteBtn>
+							<DeleteBtn onClick={() => deleteData(val.id)}>삭제</DeleteBtn>
 						</TodoItem>
 					))
 				}
