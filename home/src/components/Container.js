@@ -22,7 +22,7 @@ const Container = () => {
 					<Route path="react/home/styled-components" element={<StyledComponents />} />
 					<Route path="react/home/hook" element={<Hook />} />
 					<Route path="react/home/todo" element={<Todo />} />
-					<Route path="react/home" element={<Todo />} />
+					{/* <Route path="react/home" element={<Todo />} /> */}
 					{/* <Route path="react/reactmemo" element={<ReactMemo />} /> */}
 				</Routes>
 			</div>

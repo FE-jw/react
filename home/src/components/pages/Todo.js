@@ -39,11 +39,8 @@ const Todo = () => {
 		display:flex;
 		flex:1;
 		align-items:center;
-		height:40px;
+		min-height:40px;
 		font-size:16px;
-		overflow:hidden;
-		text-overflow:ellipsis;
-		white-space:nowrap
 	`;
 	
 	const TodoInput = styled.input`
@@ -101,11 +98,11 @@ const Todo = () => {
 	const [TodoData, setTodoData] = useState([
 		{
 			id: 0,
-			todo: '수정 버튼 클릭 시 input으로 변경'
+			todo: '할 일 1'
 		},
 		{
 			id: 1,
-			todo: '추가하기 버튼 활성화될 때 리렌더링 되는 문제 확인'
+			todo: '할 일 2'
 		}
 	]);
 
@@ -135,16 +132,9 @@ const Todo = () => {
 		);
 	};
 
-	//할 일 수정
-	const [isEdit, setIsEdit] = useState(false);
-	const editData = idx => {
-		setIsEdit(true);
-	};
-
 	const [isActive, setIsActive] = useState(true);
 
 	const toggleBtn = (e) => {
-		// console.log(e.target.value);
 		if(e.target.value.trim() === ''){
 			setIsActive(false);
 		}else{
@@ -160,9 +150,8 @@ const Todo = () => {
 					TodoData.map((val, idx) => (
 						<TodoItem key={idx}>
 							<TodoText>
-								{isEdit ? <TodoInput type="text" placeholder="+ 할 일 추가" value={val.todo} /> : val.todo}
+								{val.todo}
 							</TodoText>
-							<EditBtn onClick={() => editData(idx)}>수정</EditBtn>
 							<DeleteBtn onClick={() => deleteData(val.id)}>삭제</DeleteBtn>
 						</TodoItem>
 					))
