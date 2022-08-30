@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
 const Hook = () => {
@@ -29,10 +29,15 @@ const Hook = () => {
 
 	const [cnt, setCnt] = useState(0);
 	const [effectCnt, setEffectCnt] = useState(0);
+	const mounted = useRef(false);
 
 	useEffect(() => {
-		// alert('useEffect');
-	}, []);
+		if(!mounted.current){
+			mounted.current = true;
+		}else{
+			alert(`${effectCnt}번째 클릭`);
+		}
+	}, [effectCnt]);
 
 	return (
 		<ul>
@@ -47,9 +52,8 @@ const Hook = () => {
 				</div>
 			</StyledLi>
 			<StyledLi>
-				<StyledH2>useEffect(테스트중)</StyledH2>
+				<StyledH2>useEffect</StyledH2>
 				<div>
-					<StyledP>useEffect hook은 컴포넌트가 렌더링 이후에 어떤 일을 수행해야 하는지를 말한다. <a href="https://ko.reactjs.org/docs/hooks-effect.html" target="_blank" rel="noopener noreferrer">https://ko.reactjs.org/docs/hooks-effect.html</a></StyledP>
 					<StyledButton type="button" onClick={() => setEffectCnt(effectCnt + 1)}>클릭</StyledButton>
 				</div>
 			</StyledLi>
