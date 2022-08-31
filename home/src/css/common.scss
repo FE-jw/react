@@ -35,6 +35,8 @@ code	{font-family:Consolas, sans-serif;tab-size:6;}
 		.nav a	{display:inline-block;padding:5px;border-bottom:1px solid rgba($sky, 0.3);transition:all 0.2s;}
 		.nav a:hover,
 		.nav a.active	{color:$navy;background-color:$sky;}
+		
+		.btn-1	{margin:0 10px;padding:10px;background-color:rgba(255, 255, 255, 0.1);}
 	}
 	
 	//Footer

@@ -4,12 +4,12 @@
 ---
 
 ## **cra 개발환경 구성하기**
-```
+```console
 yarn create react-app [project]
 ```
 
 ## **npm 모듈 설치**
-```
+```console
 yarn add [module]
 ```
 
@@ -21,7 +21,7 @@ yarn add [module]
 
 * index.js 수정
 	* BrowserRouter 추가
-		```js
+		```jsx
 		import { BrowserRouter } from 'react-router-dom';
 		```
 
@@ -35,7 +35,7 @@ yarn add [module]
 		```
 
 * Link, Routes, Route 추가
-	```js
+	```jsx
 	import { Route, Routes, Link } from 'react-router-dom';
 	```
 	
@@ -56,23 +56,25 @@ yarn add [module]
 	```
 
 * styled-components 추가
-	```js
+	```jsx
 	import styled from 'styled-components';
 	```
 
 * 기본
 	```jsx
+	const StyledBtn = styled.button`
+		width:250px;
+		height:60px;
+		...
+		background-color:#282c34;
+	`;
+
 	const MyComponent = () => {
-		const StyledButton = styled.button`
-			width:250px;
-			height:60px;
-			...
-			background-color:#282c34;
-		`;
+		//이곳에 styled-components를 선언하지 말 것 (렌더링 될 때마다 요소를 새로 만들기 때문에)
 
 		return (
 			<div>
-				<StyledButton>Test Button</StyledButton>
+				<StyledBtn>Test Button</StyledBtn>
 			</div>
 		);
 	};
@@ -117,11 +119,11 @@ yarn add [module]
 
 ### **Hook**
 * useState
-	```js
+	```jsx
 	import React, { useState } from 'react';
 	```
 
-	```js
+	```jsx
 	const [cnt, setCnt] = useState(0);
 	```
 	
@@ -130,7 +132,7 @@ yarn add [module]
 	```
 
 	* 배열 추가하기
-		```js
+		```jsx
 		const [data, setData] = useState([
 			{todo: '할 일 1'},
 			{todo: '할 일 2'}
@@ -148,24 +150,37 @@ yarn add [module]
 	});
 
 	useEffect(() => {
-		console.log('마운트 될 때만 실행');
+		console.log('마운트(첫 렌더링) 될 때 실행');
 	}, []);
 
 	useEffect(() => {
 		console.log('cnt값이 업데이트 될 때마다 실행');
 	}, [cnt]);
 
-	// 업데이트 될 때 뿐만 아니라 마운트 될 때도 실행된다. 업데이트 될 경우에만 실행하고 싶다면..
+	//업데이트 될 때 뿐만 아니라 마운트 될 때도 실행된다. 업데이트 될 경우에만 실행하고 싶다면..
 	const mounted = useRef(false);
 
 	useEffect(() => {
 		if(!mounted.current){
 			mounted.current = true;
 		}else{
-			// 실행하고 싶은 기능 넣기
+			//실행하고 싶은 기능 넣기
 			alert(`${cnt}번째 클릭`);
 		}
 	}, [cnt]);
+
+	//clean up
+	useEffect(() => {
+		const timer = setInterval(() => {
+			console.log('1초 간격으로 타이머 시작!!');
+		}, 1000);
+
+		//컴포넌트 사라질 때 실행
+		return () => {
+			clearInterval(timer);
+			console.log('타이머 종료!!');
+		}
+	});
 	```
 
 
