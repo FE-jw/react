@@ -183,6 +183,22 @@ yarn add [module]
 	});
 	```
 
+* useRef
+	- 저장공간 용도
+		- State의 변화 -> 렌더링 -> 컴포넌트 내부 변수들 초기화(Ref의 값은 유지되기 때문에 일반 변수를 사용한 것과 차이가 있음)
+		- Ref의 변화 -> No 렌더링 -> 변수들의 값이 유지됨
+			```jsx
+			const cntRef = useRef(0);
+
+			const increaseCntRef = () => {
+				//cntRef.current는 1씩 증가하고 있지만 수정해도 컴포넌트를 리렌더링하지 않는다.
+				cntRef.current = cntRef.current + 1;
+				console.log('Ref값은', cntRef.current);
+			};
+			```
+		- **변화는 감지하지만 변화가 렌더링을 발생시키면 안되는 값을 다룰 때 유용**
+	- DOM 요소에 접근 용도
+
 
 ### **[React.memo](https://ko.reactjs.org/docs/react-api.html#reactmemo)**
 렌더링 결과를 메모이징(Memoizing)함으로써 불필요한 리렌더링을 건너뛴다.

@@ -128,6 +128,11 @@ const Todo = () => {
 		}
 	};
 
+	//할 일 수정
+	const EditData = (e) => {
+		console.log(e.target.outerText);
+	};
+
 	//할 일 삭제
 	const deleteData = idx => {
 		setTodoData(
@@ -152,7 +157,7 @@ const Todo = () => {
 				{
 					TodoData.map((val, idx) => (
 						<TodoItem key={idx}>
-							<TodoText>
+							<TodoText contentEditable={true} suppressContentEditableWarning={true} onKeyUp={(e) => EditData(e)}>
 								{val.todo}
 							</TodoText>
 							<DeleteBtn type="button" onClick={() => deleteData(val.id)}>삭제</DeleteBtn>
