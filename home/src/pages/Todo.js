@@ -113,13 +113,22 @@ const Todo = () => {
 	//할 일 추가
 	const addData = val => {
 		if(val.trim() !== ''){
-			setTodoData([
+			/* setTodoData([
 				...TodoData,
 				{
 					id: TodoData.length,
 					todo: val
 				}
-			]);
+			]); */
+			setTodoData((prevState) => {
+				return([
+					...prevState,
+					{
+						id: TodoData.length,
+						todo: val
+					}
+				]);
+			});
 			dataInput.current.value = '';
 			setIsActive(false);
 		}else{

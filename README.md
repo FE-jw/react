@@ -118,7 +118,7 @@ yarn add [module]
 	```
 
 ### **Hook**
-* useState
+* useState: State란 컴포넌트가 가질 수 있는 상태를 의미한다.<br>만약 '시계'라는 컴포넌트가 있고, 'time'이라는 State를 가지고 있다고 상상해보자.<br>useState는 time State를 간편하게 생성하고 업데이트 할 수 있는 도구이다.
 	```jsx
 	import React, { useState } from 'react';
 	```
@@ -142,7 +142,23 @@ yarn add [module]
 			...data,
 			{todo: val}
 		]);
+
+		//콜백 형식
+		setData((prevState) => {
+			return([
+				...prevState,
+				{todo: val}
+			]);
+		});
 		```
+
+	* **리렌더링 될 때 마다 엄청 무거운 작업이 계속 수행되기 때문에 성능에 영향을 줌. 이럴 땐 콜백 함수로 값을 return!**
+		```jsx
+		const [names, setNames] = useState(() => {
+			return heavyWork();
+		});
+		```
+
 * useEffect: 컴포넌트가 렌더링 될 때 특정 기능을 수행할 수 있도록 하는 hook.<br>index.js에 <React.StrictMode>가 있으면 2번씩 실행된다.
 	```jsx
 	useEffect(() => {
@@ -184,9 +200,9 @@ yarn add [module]
 	```
 
 * useRef
-	- 저장공간 용도
-		- State의 변화 -> 렌더링 -> 컴포넌트 내부 변수들 초기화(Ref의 값은 유지되기 때문에 일반 변수를 사용한 것과 차이가 있음)
-		- Ref의 변화 -> No 렌더링 -> 변수들의 값이 유지됨
+	* 저장공간 용도
+		* State의 변화 -> 렌더링 -> 컴포넌트 내부 변수들 초기화(Ref의 값은 유지되기 때문에 일반 변수를 사용한 것과 차이가 있음)
+		* Ref의 변화 -> No 렌더링 -> 변수들의 값이 유지됨
 			```jsx
 			const cntRef = useRef(0);
 
@@ -196,8 +212,13 @@ yarn add [module]
 				console.log('Ref값은', cntRef.current);
 			};
 			```
-		- **변화는 감지하지만 변화가 렌더링을 발생시키면 안되는 값을 다룰 때 유용**
-	- DOM 요소에 접근 용도
+		* **변화는 감지하지만 변화가 렌더링을 발생시키면 안되는 값을 다룰 때 유용**
+	* DOM 요소에 접근 용도
+		```jsx
+		const inputRef = useRef();
+
+		<input type="text" placeholder="username" ref={inputRef} />
+		```
 
 
 ### **[React.memo](https://ko.reactjs.org/docs/react-api.html#reactmemo)**

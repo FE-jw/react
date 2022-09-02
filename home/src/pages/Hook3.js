@@ -59,6 +59,27 @@ const Component2 = () => {
 	);
 };
 
+const Component3 = () => {
+	const inputRef = useRef();
+
+	useEffect(() => {
+		console.log(inputRef);
+		inputRef.current.focus();
+	}, []);
+
+	const login = () => {
+		alert(`환영합니다 ${inputRef.current.value}!`);
+		inputRef.current.focus();
+	};
+
+	return (
+		<div>
+			<input type="text" placeholder="username" ref={inputRef} />
+			<button type="button" className="btn-1" onClick={login}>로그인</button>
+		</div>
+	);
+};
+
 const Hook3 = () => {
 	const [cnt, setCnt] = useState(0);
 	const renderCnt = useRef(0);
@@ -77,6 +98,10 @@ const Hook3 = () => {
 			<div>Count: {cnt}</div>
 			<p>개발자 도구 console 창에서 렌더링 수 확인</p>
 			<button type="button" className="btn-1" onClick={() => setCnt(cnt + 1)}>Increase Count</button>
+			<hr />
+			<p>DOM 요소에 접근</p>
+			<p>최초에 포커스 가도록 구현. alert 이후 다시 포커스 가도록 구현</p>
+			<Component3 />
 		</div>
 	);
 };
