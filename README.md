@@ -152,7 +152,7 @@ yarn add [module]
 		});
 		```
 
-	* **리렌더링 될 때 마다 엄청 무거운 작업이 계속 수행되기 때문에 성능에 영향을 줌. 이럴 땐 콜백 함수로 값을 return!**
+	* **엄청 무거운 작업이 있는 경우 리렌더링 될 때 마다 계속 수행되기 때문에 성능에 영향을 줌. 이럴 땐 콜백 함수로 값을 return!**
 		```jsx
 		const [names, setNames] = useState(() => {
 			return heavyWork();
