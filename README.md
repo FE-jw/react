@@ -220,6 +220,12 @@ yarn add [module]
 		<input type="text" placeholder="username" ref={inputRef} />
 		```
 
+* Context: 전역적으로 사용되는 data를 손쉽게 전달할 수 있게 한다.<br>일일이 prop을 받아서 전달하게 되면 해당 data가 불필요한 컴포넌트에서도 전달해야 하기 떄문에 불필요한 코드가 많아진다.
+	* Context는 꼭 필요할때만 사용하는 것을 권장!!
+		* Context를 사용하면 컴포넌트를 재사용하기 어려워질 수 있다.
+		* Prop drilling을 피하기 위한 목적이라면 Component Composition(컴포넌트 합성)을 먼저 고려해보자.
+* useContext: Context로 공유한 data를 쉽게 받아오는 hook.
+
 
 ### **[React.memo](https://ko.reactjs.org/docs/react-api.html#reactmemo)**
 렌더링 결과를 메모이징(Memoizing)함으로써 불필요한 리렌더링을 건너뛴다.
