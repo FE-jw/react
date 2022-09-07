@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Hook2Timer from './Hook2Timer';
+import CommonBtn from '../components/CommonBtn';
 
 const Hook2 = () => {
 	const [cnt, setCnt] = useState(0);
@@ -36,7 +37,7 @@ const Hook2 = () => {
 				<h2>useEffect</h2>
 				<p>개발자 도구 console 창 확인</p>
 				<div>
-					<button type="button" className="btn-1" onClick={() => setCnt(cnt + 1)}>클릭</button>
+					<CommonBtn onClick={() => setCnt(cnt + 1)}>클릭</CommonBtn>
 					<span>클릭횟수: {cnt}</span><br />
 					<input type="text" value={name} onChange={handleInputChange} placeholder="입력하는대로 우측에 나옴" />
 					<span>{name}</span>
@@ -44,7 +45,7 @@ const Hook2 = () => {
 			</li>
 			<li>
 				<h2>useEffect clean up</h2>
-				<button type="button" className="btn-1" onClick={toggleTimer}>타이머 토글</button>
+				<CommonBtn onClick={toggleTimer}>타이머 토글</CommonBtn>
 				{timerToggle && <Hook2Timer />}
 			</li>
 		</ul>

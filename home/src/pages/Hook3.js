@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import CommonBtn from '../components/CommonBtn';
 
 const Component1 = () => {
 	const [cnt, setCnt] = useState(0);
@@ -21,8 +22,8 @@ const Component1 = () => {
 			<div>State: {cnt}</div>
 			<div>Ref: {cntRef.current}</div>
 			<p>Increase Ref 값은 렌더링 후에만 반영된다.</p>
-			<button type="button" className="btn-1" onClick={increaseCntState}>Increase State</button>
-			<button type="button" className="btn-1" onClick={increaseCntRef}>Increase Ref</button>
+			<CommonBtn onClick={increaseCntState}>Increase State</CommonBtn>
+			<CommonBtn onClick={increaseCntRef}>Increase Ref</CommonBtn>
 		</>
 	);
 };
@@ -52,9 +53,9 @@ const Component2 = () => {
 			<div>Ref: {cntRef.current}</div>
 			<div>Var: {cntVar}</div>
 			<p>일반 변수는 렌더링 시 값이 초기화 되기 때문에 계속 초기값 상태</p>
-			<button type="button" className="btn-1" onClick={increaseRef}>Increase Ref</button>
-			<button type="button" className="btn-1" onClick={increaseVar}>Increase Var</button>
-			<button type="button" className="btn-1" onClick={doRendering}>Component2 렌더링 하기</button>
+			<CommonBtn onClick={increaseRef}>Increase Ref</CommonBtn>
+			<CommonBtn onClick={increaseVar}>Increase Var</CommonBtn>
+			<CommonBtn onClick={doRendering}>Component2 렌더링 하기</CommonBtn>
 		</>
 	);
 };
@@ -75,7 +76,7 @@ const Component3 = () => {
 	return (
 		<div>
 			<input type="text" placeholder="username" ref={inputRef} />
-			<button type="button" className="btn-1" onClick={login}>로그인</button>
+			<CommonBtn onClick={login}>로그인</CommonBtn>
 		</div>
 	);
 };
@@ -97,7 +98,7 @@ const Hook3 = () => {
 			<hr />
 			<div>Count: {cnt}</div>
 			<p>개발자 도구 console 창에서 렌더링 수 확인</p>
-			<button type="button" className="btn-1" onClick={() => setCnt(cnt + 1)}>Increase Count</button>
+			<CommonBtn onClick={() => setCnt(cnt + 1)}>Increase Count</CommonBtn>
 			<hr />
 			<p>DOM 요소에 접근</p>
 			<p>최초에 포커스 가도록 구현. alert 이후 다시 포커스 가도록 구현</p>

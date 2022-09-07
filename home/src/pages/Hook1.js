@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import CommonBtn from '../components/CommonBtn';
 
 const Component1 = () => {
 	const [time, setTime] = useState(1);
@@ -20,7 +21,7 @@ const Component1 = () => {
 	return(
 		<>
 			<span>시간: {time}시</span>
-			<button type="button" className="btn-1" onClick={handleClick}>시간 업데이트</button>
+			<CommonBtn onClick={handleClick}>시간 업데이트</CommonBtn>
 		</>
 	);
 };
@@ -52,7 +53,7 @@ const Component2 = () => {
 	return(
 		<div>
 			<input type="text" value={input} onChange={handleInputChange} />
-			<button type="button" className="btn-1" onClick={handleUpload}>업로드</button>
+			<CommonBtn onClick={handleUpload}>업로드</CommonBtn>
 			{
 				names.map((value, idx) => {
 					return <p key={idx}>{value}</p>;
@@ -70,11 +71,11 @@ const Hook1 = () => {
 			<li>
 				<h2>useState</h2>
 				<div>
-					<button type="button" className="btn-1" onClick={() => setCnt(cnt - 10)}>-10</button>
-					<button type="button" className="btn-1" onClick={() => setCnt(cnt - 1)}>-1</button>
+					<CommonBtn onClick={() => setCnt(cnt - 10)}>-10</CommonBtn>
+					<CommonBtn onClick={() => setCnt(cnt - 1)}>-1</CommonBtn>
 					<span>{cnt}</span>
-					<button type="button" className="btn-1" onClick={() => setCnt(cnt + 1)}>+1</button>
-					<button type="button" className="btn-1" onClick={() => setCnt(cnt + 10)}>+10</button>
+					<CommonBtn onClick={() => setCnt(cnt + 1)}>+1</CommonBtn>
+					<CommonBtn onClick={() => setCnt(cnt + 10)}>+10</CommonBtn>
 				</div>
 			</li>
 			<li>
