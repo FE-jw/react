@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
 const TodoWrap = styled.div`
@@ -94,52 +94,69 @@ const AddBtn = styled.button`
 	}
 `;
 
-
 const Todo = () => {
 	const [TodoData, setTodoData] = useState([
 		{
 			id: 0,
-			todo: '수정 기능 추가'
+			todo: '할 일 추가 줄바꿈 가능하도록'
 		},
 		{
 			id: 1,
 			todo: '할 일 2'
+		},
+		{
+			id: 2,
+			todo: '할 일 3'
+		},
+		{
+			id: 3,
+			todo: '할 일 4'
 		}
 	]);
 
-	//추가할 텍스트 선택
-	const dataInput = useRef();
+	const dataInput = useRef('');
 
 	//할 일 추가
-	const addData = val => {
-		if(val.trim() !== ''){
-			/* setTodoData([
-				...TodoData,
-				{
-					id: TodoData.length,
-					todo: val
-				}
-			]); */
-			setTodoData((prevState) => {
-				return([
-					...prevState,
-					{
-						id: TodoData.length,
-						todo: val
-					}
-				]);
-			});
-			dataInput.current.value = '';
-			setIsActive(false);
-		}else{
-			alert('내용을 입력해주세요.');
-			dataInput.current.focus();
+	const addData = (e) => {
+		//Enter만 눌렀을 때
+		if(!e.shiftKey && e.key.toLowerCase() === 'enter'){
+			if(e.target.value.trim() !== ''){
+				//성공
+				setTodoData((prevState) => {
+					return([
+						...prevState,
+						{
+							id: TodoData.length,
+							todo: e.target.value
+						}
+					]);
+				});
+				console.log(`할 일 [${e.target.value}] 추가 완료`);
+			}else{
+				//실패
+				alert('내용을 입력해주세요.');
+				e.target.focus();
+			}
 		}
 	};
 
+	//TodoData 업데이트 될 때만 실행하기 위함(마운트 될 때는 실행 X)
+	const mounted = useRef(false);
+	useEffect(() => {
+		if(!mounted.current){
+			mounted.current = true;
+		}else{
+			dataInput.current.value = '';
+			console.log('input value 초기화 완료');
+		}
+	}, [TodoData]);
+
 	//할 일 수정
 	const EditData = (e) => {
-		console.log(e.target.outerText);
+		//Enter만 눌렀을 때
+		if(!e.shiftKey && e.key.toLowerCase() === 'enter'){
+			e.target.blur();
+		}
 	};
 
 	//할 일 삭제
@@ -149,38 +166,37 @@ const Todo = () => {
 		);
 	};
 
-	const [isActive, setIsActive] = useState(false);
-
-	const toggleBtn = (e) => {
-		if(e.target.value.trim() === ''){
-			setIsActive(false);
-		}else{
-			setIsActive(true);
-		}
-	};
-
 	return (
-		<TodoWrap>
-			<TodoTit>To Do List</TodoTit>
-			<TodoList>
-				{
-					TodoData.map((val, idx) => (
-						<TodoItem key={idx}>
-							<TodoText contentEditable={true} suppressContentEditableWarning={true} onKeyUp={(e) => EditData(e)}>
-								{val.todo}
-							</TodoText>
-							<DeleteBtn type="button" onClick={() => deleteData(val.id)}>삭제</DeleteBtn>
-						</TodoItem>
-					))
-				}
-				<TodoItem>
-					<TodoText>
-						<TodoInput type="text" placeholder="+ 할 일 추가" ref={dataInput} onChange={(e) => toggleBtn(e)} />
-					</TodoText>
-					<AddBtn type="button" className={isActive ? 'btn_on' : 'btn_off'} onClick={() => addData(dataInput.current.value)}>추가</AddBtn>
-				</TodoItem>
-			</TodoList>
-		</TodoWrap>
+		<>
+			<TodoWrap>
+				<TodoTit>To Do List</TodoTit>
+				<TodoList>
+					{
+						TodoData.map((val, idx) => (
+							<TodoItem key={idx}>
+								<TodoText contentEditable={true} suppressContentEditableWarning={true} onKeyPress={(e) => EditData(e)}>
+									{val.todo}
+								</TodoText>
+								<DeleteBtn type="button" onClick={() => deleteData(val.id)}>삭제</DeleteBtn>
+							</TodoItem>
+						))
+					}
+					<TodoItem>
+						<TodoText>
+							<TodoInput type="text" placeholder="+ 할 일 추가" ref={dataInput} onKeyPress={addData} />
+						</TodoText>
+					</TodoItem>
+				</TodoList>
+			</TodoWrap>
+			<ul>
+				<li>* 모티브 Google Keep</li>
+				<li>* 클릭 시 바로 수정 모드</li>
+				<li>* 수정 중 Enter만 누르면 저장</li>
+				<li>* 수정 중 Shift + Enter 누르면 줄바꿈</li>
+				<li>* 추가 중 Enter 누르면 추가</li>
+				<li>* 개발자 도구 Console창 확인</li>
+			</ul>
+		</>
 	);
 };
 
