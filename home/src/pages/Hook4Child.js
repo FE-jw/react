@@ -1,33 +1,18 @@
 import React, { useContext } from 'react';
 import { TestContext } from '../context/TestContext';
-import CommonBtn from '../components/CommonBtn';
 
 const Hook4Child = () => {
-	const colorData = useContext(TestContext);
-	console.log(colorData);
-
-	let pointColor;
-	if(colorData.color){
-		pointColor = '#d33';
-	}else{
-		pointColor = '#fff';
-	}
-
-	const handleColor = () => {
-		if(colorData.setColor){
-			colorData.setColor(false);
-			console.log(colorData.color);
-		}else{
-			colorData.setColor(true);
-			console.log(colorData.color);
-		}
-		console.log('버튼 클릭');
-	};
+	const data = useContext(TestContext);
 
 	return (
 		<div>
-			<strong style={{color:pointColor}}>Hook4 Child</strong> 컴포넌트입니다. Context를 이용해서 최상위 App 컴포넌트에서 data 전달받은 상태.
-			<CommonBtn onClick={handleColor}>Color Change</CommonBtn>
+			<strong>Hook4 Child</strong> 컴포넌트입니다.<br />Context를 이용해서 부모 컴포넌트인 Hook4 컴포넌트에서 props를 전달받지 않고 최상위 App 컴포넌트에서 {JSON.stringify(data)} 전달받은 상태입니다.
+			<ul>
+				<li>Context로 전달받은 lang값은 {data.lang} 입니다.</li>
+				<li>Context로 전달받은 theme값은 {data.theme} 입니다.</li>
+				<li>Context로 전달받은 user_name값은 {data.user_name} 입니다.</li>
+				<li>Context로 전달받은 study값은 {data.study} 입니다.</li>
+			</ul>
 		</div>
 	);
 };

@@ -225,6 +225,23 @@ yarn add [module]
 		* Context를 사용하면 컴포넌트를 재사용하기 어려워질 수 있다.
 		* Prop drilling을 피하기 위한 목적이라면 Component Composition(컴포넌트 합성)을 먼저 고려해보자.
 * useContext: Context로 공유한 data를 쉽게 받아오는 hook.
+	```jsx
+	//App.js
+	<ContextMain.Provider value={user}>
+		<ContextSub.Provider value={{lang, theme, user_name, study}}>
+			<Header />
+			<Container />
+			<Footer />
+		</ContextSub.Provider>
+	</ContextMain.Provider>
+
+	//ContextTest.js
+	import { ContextMain } from '../context/ContextMain';
+	import { ContextSub } from '../context/ContextSub';
+	
+	const data_1 = useContext(ContextMain);
+	const data_2 = useContext(ContextSub);
+	```
 
 
 ### **[React.memo](https://ko.reactjs.org/docs/react-api.html#reactmemo)**
