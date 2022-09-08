@@ -40,6 +40,11 @@ const TodoText = styled.div`
 	align-items:center;
 	min-height:40px;
 	font-size:16px;
+
+	&[placeholder]:empty:before {
+		content: attr(placeholder);
+		color: #aaa; 
+	}
 `;
 
 const TodoInput = styled.input`
@@ -114,24 +119,24 @@ const Todo = () => {
 		}
 	]);
 
-	const dataInput = useRef('');
+	const infoPush = useRef();
 
 	//할 일 추가
 	const addData = (e) => {
 		//Enter만 눌렀을 때
 		if(!e.shiftKey && e.key.toLowerCase() === 'enter'){
-			if(e.target.value.trim() !== ''){
+			if(e.target.innerText.trim() !== ''){
 				//성공
 				setTodoData((prevState) => {
 					return([
 						...prevState,
 						{
 							id: TodoData.length,
-							todo: e.target.value
+							todo: e.target.innerText
 						}
 					]);
 				});
-				console.log(`할 일 [${e.target.value}] 추가 완료`);
+				console.log(`할 일 [${e.target.innerText}] 추가 완료`);
 			}else{
 				//실패
 				alert('내용을 입력해주세요.');
@@ -146,13 +151,17 @@ const Todo = () => {
 		if(!mounted.current){
 			mounted.current = true;
 		}else{
-			dataInput.current.value = '';
+			console.log(infoPush);
+			infoPush.current.innerHTML = '';
+			// infoPush.current.outerText = '';
+			// infoPush.current.innerText = '';
+			// infoPush.current.textContent = '';
 			console.log('input value 초기화 완료');
 		}
 	}, [TodoData]);
 
 	//할 일 수정
-	const EditData = (e) => {
+	const editData = (e) => {
 		//Enter만 눌렀을 때
 		if(!e.shiftKey && e.key.toLowerCase() === 'enter'){
 			e.target.blur();
@@ -174,7 +183,7 @@ const Todo = () => {
 					{
 						TodoData.map((val, idx) => (
 							<TodoItem key={idx}>
-								<TodoText contentEditable={true} suppressContentEditableWarning={true} onKeyPress={(e) => EditData(e)}>
+								<TodoText contentEditable={true} suppressContentEditableWarning={true} onKeyPress={(e) => editData(e)}>
 									{val.todo}
 								</TodoText>
 								<DeleteBtn type="button" onClick={() => deleteData(val.id)}>삭제</DeleteBtn>
@@ -183,7 +192,7 @@ const Todo = () => {
 					}
 					<TodoItem>
 						<TodoText>
-							<TodoInput type="text" placeholder="+ 할 일 추가" ref={dataInput} onKeyPress={addData} />
+							<TodoText className="add" placeholder="+할 일 추가" contentEditable={true} suppressContentEditableWarning={true} ref={infoPush} onKeyPress={addData}></TodoText>
 						</TodoText>
 					</TodoItem>
 				</TodoList>
