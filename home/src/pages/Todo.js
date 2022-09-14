@@ -99,15 +99,26 @@ const AddBtn = styled.button`
 	}
 `;
 
+const DescUl = styled.ul`
+	max-width:500px;
+	margin:20px auto 0;
+`;
+
+const DescDl = styled.dl`
+	max-width:500px;
+	margin:20px auto 0;
+	dt	{font-weight:bold;}
+`;
+
 const Todo = () => {
 	const [TodoData, setTodoData] = useState([
 		{
 			id: 0,
-			todo: '할 일 추가 줄바꿈 가능하도록'
+			todo: '배열 특정 항목 수정하는 법 확인'
 		},
 		{
 			id: 1,
-			todo: '할 일 2'
+			todo: 'shift + enter 할 일 추가 줄바꿈 가능하도록 수정'
 		},
 		{
 			id: 2,
@@ -125,6 +136,7 @@ const Todo = () => {
 	const addData = (e) => {
 		//Enter만 눌렀을 때
 		if(!e.shiftKey && e.key.toLowerCase() === 'enter'){
+			alert('추가 완료');
 			if(e.target.innerText.trim() !== ''){
 				//성공
 				setTodoData((prevState) => {
@@ -151,25 +163,36 @@ const Todo = () => {
 		if(!mounted.current){
 			mounted.current = true;
 		}else{
-			console.log(infoPush);
+			// console.log(infoPush);
 			infoPush.current.innerHTML = '';
-			// infoPush.current.outerText = '';
-			// infoPush.current.innerText = '';
-			// infoPush.current.textContent = '';
 			console.log('input value 초기화 완료');
 		}
 	}, [TodoData]);
 
 	//할 일 수정
 	const editData = (e) => {
+		console.log(e.target);
 		//Enter만 눌렀을 때
 		if(!e.shiftKey && e.key.toLowerCase() === 'enter'){
+			/*
+			setTodoData((prevState) => {
+				return([
+					...prevState,
+					{
+						id: TodoData.length,
+						todo: e.target.innerText
+					}
+				]);
+			});
 			e.target.blur();
+			*/
+			console.log(`할 일 [${e.target.innerText}] 수정 완료`);
 		}
 	};
 
 	//할 일 삭제
 	const deleteData = idx => {
+		alert('삭제 완료');
 		setTodoData(
 			TodoData.filter(todos => todos.id !== idx)
 		);
@@ -197,14 +220,22 @@ const Todo = () => {
 					</TodoItem>
 				</TodoList>
 			</TodoWrap>
-			<ul>
-				<li>* 모티브 Google Keep</li>
+			<DescUl>
+				<li>* 모티브 <strong>Google Keep</strong></li>
 				<li>* 클릭 시 바로 수정 모드</li>
 				<li>* 수정 중 Enter만 누르면 저장</li>
 				<li>* 수정 중 Shift + Enter 누르면 줄바꿈</li>
 				<li>* 추가 중 Enter 누르면 추가</li>
 				<li>* 개발자 도구 Console창 확인</li>
-			</ul>
+			</DescUl>
+			<DescDl>
+				<dt>실시간 투두리스트 data(리스트 추가하면 동기화됨)</dt>
+				{
+					TodoData.map((value, idx) => {
+						return <dd key={value.id}>{value.todo}</dd>
+					})
+				}
+			</DescDl>
 		</>
 	);
 };
