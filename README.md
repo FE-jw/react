@@ -34,7 +34,7 @@ yarn add [module]
 		</React.StrictMode>
 		```
 
-* Link, Routes, Route 추가
+* Link, Routes, Route
 	```jsx
 	import { Route, Routes, Link } from 'react-router-dom';
 	```
@@ -47,6 +47,18 @@ yarn add [module]
 		<Route path="/" element={<Home />} />
 		<Route path="/about" element={<About />} />
 	</Routes>
+	```
+
+* NavLink
+	```jsx
+	import { NavLink } from 'react-router-dom';
+
+	//활성화 시 'acitive' class가 추가된다.
+	<NavLink to="/home">Home</NavLink>
+	<NavLink to="/about">About</NavLink>
+
+	//활성화 class명을 바꾸고 싶다면... (공식문서 참고: https://reactrouter.com/en/v6.3.0/getting-started/tutorial#active-links)
+	<NavLink to="/test" className={({ isActive }) => (isActive ? 'my-class' : '')}>Test</NavLink>
 	```
 
 ### **styled-components**
@@ -101,6 +113,17 @@ yarn add [module]
 		}
 	`;
 	```
+
+* 자손 선택
+	```jsx
+	const DescDl = styled.dl`
+		...
+		dt	{
+			font-weight:bold;
+		}
+	`;
+	```
+
 
 * 동위 선택
 	```jsx
