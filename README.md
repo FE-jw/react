@@ -284,6 +284,13 @@ index.js에 <React.StrictMode>가 있으면 2번씩 실행된다.
 	}, [item]);
 	```
 
+* useCallback: 최적화를 위한 Hook이다. useMemo와 비슷하지만 함수 자체를 메모이제이션한다는 차이가 있다.  
+첫 번째 인자는 메모이제이션 할 콜백함수, 두 번째 인자는 배열이다.
+	```jsx
+	const calculate = useCallback((num) => {
+		return num + 1;
+	}, [item]);
+	```
 
 ### **[React.memo](https://ko.reactjs.org/docs/react-api.html#reactmemo)**
 렌더링 결과를 메모이징(Memoizing)함으로써 불필요한 리렌더링을 건너뛴다.
