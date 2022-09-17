@@ -13,6 +13,7 @@ const Nav = () => {
 				<li><NavLink to="react/home/Hook4">Context/useContext</NavLink></li>
 				<li><NavLink to="react/home/Hook5">useMemo</NavLink></li>
 				<li><NavLink to="react/home/Hook6">useCallback</NavLink></li>
+				<li><NavLink to="react/home/Lotto">Lotto</NavLink></li>
 			</ul>
 		</nav>
 	);

@@ -7,6 +7,7 @@ import Hook3 from '../pages/Hook3';
 import Hook4 from '../pages/Hook4';
 import Hook5 from '../pages/Hook5';
 import Hook6 from '../pages/Hook6';
+import Lotto from '../pages/Lotto';
 import Todo from '../pages/Todo';
 
 import Nav from './Nav';
@@ -25,6 +26,7 @@ const Container = () => {
 					<Route path="react/home/hook4" element={<Hook4 />} />
 					<Route path="react/home/hook5" element={<Hook5 />} />
 					<Route path="react/home/hook6" element={<Hook6 />} />
+					<Route path="react/home/lotto" element={<Lotto />} />
 				</Routes>
 			</div>
 		</section>
