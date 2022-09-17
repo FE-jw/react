@@ -124,7 +124,6 @@ yarn add [module]
 	`;
 	```
 
-
 * 동위 선택
 	```jsx
 	const EditBtn = styled.button`
@@ -247,7 +246,14 @@ index.js에 <React.StrictMode>가 있으면 2번씩 실행된다.
 		```
 * useContext: Context로 공유한 data를 쉽게 받아오는 hook.
 	```jsx
+	//TestContext.js
+	import { createContext } from 'react';
+
+	export  const TestContext = createContext(null);
+
 	//App.js
+	import { TestContext } from './context/TestContext';
+
 	<ContextMain.Provider value={user}>
 		<ContextSub.Provider value={{lang, theme, user_name, study}}>
 			<Header />
