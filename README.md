@@ -301,10 +301,23 @@ index.js에 <React.StrictMode>가 있으면 2번씩 실행된다.
 ### **[React.memo](https://ko.reactjs.org/docs/react-api.html#reactmemo)**
 렌더링 결과를 메모이징(Memoizing)함으로써 불필요한 리렌더링을 건너뛴다.
 
+### **fetch API 호출하기**
+```js
+fetch(url, options)
+	.then((res) => res.json())
+	.then((data) => console.log(data))
+	.catch((err) => console.log(err));
+```
+
 #### **제목 못정함**
 ```
 <button type="button" onClick={setCnt(cnt + 1)}>틀린 방법</button>
 <button type="button" onClick={() => setCnt(cnt + 1)}>옳은 방법</button>
 
 `string 사이에 ${변수} 삽입하기`
+
+삼항연산자 &&중첩
+{
+	(true && true) && <h1>Hi There</h1>
+}
 ```
