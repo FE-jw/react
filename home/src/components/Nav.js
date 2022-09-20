@@ -14,6 +14,7 @@ const Nav = () => {
 				<li><NavLink to="react/home/Hook5">useMemo</NavLink></li>
 				<li><NavLink to="react/home/Hook6">useCallback</NavLink></li>
 				<li><NavLink to="react/home/Lotto">Lotto</NavLink></li>
+				<li><NavLink to="react/home/Api">Api</NavLink></li>
 			</ul>
 		</nav>
 	);
