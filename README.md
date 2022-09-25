@@ -27,11 +27,9 @@ yarn add [module]
 
 	* BrowserRouter로 App 컴포넌트 감싸기
 		```jsx
-		<React.StrictMode>
-			<BrowserRouter>
-				<App />
-			</BrowserRouter>
-		</React.StrictMode>
+		<BrowserRouter>
+			<App />
+		</BrowserRouter>
 		```
 
 * Link, Routes, Route
