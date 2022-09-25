@@ -25,7 +25,7 @@ yarn add [module]
 		import { BrowserRouter } from 'react-router-dom';
 		```
 
-	* BrowserRouter 감싸기
+	* BrowserRouter로 App 컴포넌트 감싸기
 		```jsx
 		<React.StrictMode>
 			<BrowserRouter>
@@ -94,7 +94,7 @@ yarn add [module]
 
 * hover 적용
 	```jsx
-	const StyledButton = styled.button`
+	const StyledBtn = styled.button`
 		...
 		&:hover	{
 			border:1px solid #61dafb;
@@ -104,7 +104,7 @@ yarn add [module]
 
 * media query 적용
 	```jsx
-	const StyledButton = styled.button`
+	const StyledBtn = styled.button`
 		...
 		@media all and (min-width: 800px) {
 			width:400px;
