@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+@font-face{font-family:"NanumSquareExtraBold";src:url("https://cdn.jsdelivr.net/gh/fe-jw/fe-jw.github.io/font/NanumSquareEB.woff") format("woff");unicode-range:U+AC00-D7AF,U+0030-0039,U+0020-002F,U+003A-0040,U+005B-0060,U+007B-007E;font-display:swap;}
+@font-face{font-family:"NanumSquareR";src:url("https://cdn.jsdelivr.net/gh/fe-jw/fe-jw.github.io/font/NanumSquareR.woff") format("woff");unicode-range:U+AC00-D7AF,U+0030-0039,U+0020-002F,U+003A-0040,U+005B-0060,U+007B-007E;font-display:swap;}
+@font-face{font-family:"Roboto-Bold";src:url("https://cdn.jsdelivr.net/gh/fe-jw/fe-jw.github.io/font/Roboto-Bold.ttf") format("truetype");unicode-range:U+0041-005A,U+0061-007A;font-display:swap;}
+@font-face{font-family:"Roboto-Regular";src:url("https://cdn.jsdelivr.net/gh/fe-jw/fe-jw.github.io/font/Roboto-Regular.ttf") format("truetype");unicode-range:U+0041-005A,U+0061-007A;font-display:swap;}
+*{margin:0;padding:0;}
+html{-webkit-text-size-adjust:none;}
+body{line-height:1.2;font-family:"Roboto-Regular","NanumSquareR",sans-serif;font-size:16px;color:#000;}
+h1,h2,h3,h4,h5,h6,strong{font-family:"Roboto-Bold","NanumSquareExtraBold",sans-serif;font-weight:normal;}
+a{color:inherit;text-decoration:none;}
+button{line-height:inherit;font-family:inherit;font-size:inherit;color:inherit;border:none;background-color:transparent;cursor:pointer;}
+input{border:0;border-radius:0;background:none;-webkit-appearance:none;appearance:none;}
+input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0;}
+input::placeholder{color:#ccc;}
+li{list-style:none;}
+.lotto-wrap{display:flex;align-items:center;min-width:320px;max-width:500px;min-height:100vh;margin:0 auto;padding:40px 0;box-sizing:border-box;}
+.lotto-wrap .lotto{margin:auto;}
+@media all and (min-width: 768px){
+.lotto-wrap{width:600px;max-width:none;}
+}
