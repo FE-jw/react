@@ -137,6 +137,13 @@ yarn add [module]
 	`;
 	```
 
+* 외부 컴포넌트에 적용할 때
+	```jsx
+	const SlideStyle = styled(SwiperSlide)`
+		...
+	`;
+	```
+
 ### **Hook**
 * useState: State란 컴포넌트가 가질 수 있는 상태를 의미한다.  
 만약 '시계'라는 컴포넌트가 있고, 'time'이라는 State를 가지고 있다고 상상해보자.  
