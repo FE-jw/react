@@ -4655,6 +4655,11 @@ globby@^11.0.4, globby@^11.1.0:
     merge2 "^1.4.1"
     slash "^3.0.0"
 
+google-sheets-mapper@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/google-sheets-mapper/-/google-sheets-mapper-2.0.0.tgz#6ca641de128e59834d15f33838038d5e00c418ec"
+  integrity sha512-v5PH/VOOYStUvg93SidjfEteGtl6uqqNep9WkmfFHuGKsEbenW94Pufg/pz0tI1F8ssTxGZwgDrNsucr9tnfeQ==
+
 graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.2.0, graceful-fs@^4.2.4, graceful-fs@^4.2.6, graceful-fs@^4.2.9:
   version "4.2.10"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.10.tgz#147d3a006da4ca3ce14728c7aefc287c367d7a6c"
@@ -8571,6 +8576,13 @@ uri-js@^4.2.2:
   integrity sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==
   dependencies:
     punycode "^2.1.0"
+
+use-google-sheets@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/use-google-sheets/-/use-google-sheets-2.0.0.tgz#dd6d1ad755f111fcc4878b4bda31a217b18b7fc4"
+  integrity sha512-CbMgwqK8MIorrKIjkSijnWPI0FTcJhQqV8g8ujX2cb68CtSYKmBG52oUyLBPYXRXDVLmcRWyqabmepOZXN+HSA==
+  dependencies:
+    google-sheets-mapper "^2.0.0"
 
 util-deprecate@^1.0.1, util-deprecate@^1.0.2, util-deprecate@~1.0.1:
   version "1.0.2"

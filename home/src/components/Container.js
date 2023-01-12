@@ -7,7 +7,9 @@ import Hook3 from '../pages/Hook3';
 import Hook4 from '../pages/Hook4';
 import Hook5 from '../pages/Hook5';
 import Hook6 from '../pages/Hook6';
+import Hook7 from '../pages/Hook7';
 import Lotto from '../pages/Lotto';
+import Googlesheet from '../pages/Googlesheet';
 import Api from '../pages/Api';
 import Todo from '../pages/Todo';
 
@@ -27,8 +29,10 @@ const Container = () => {
 					<Route path="react/home/hook4" element={<Hook4 />} />
 					<Route path="react/home/hook5" element={<Hook5 />} />
 					<Route path="react/home/hook6" element={<Hook6 />} />
-					<Route path="react/home/lotto" element={<Lotto />} />
+					<Route path="react/home/hook7" element={<Hook7 />} />
+					{/* <Route path="react/home/lotto" element={<Lotto />} /> */}
 					<Route path="react/home/api" element={<Api />} />
+					{/* <Route path="react/home/googlesheet" element={<Googlesheet />} /> */}
 				</Routes>
 			</div>
 		</section>
