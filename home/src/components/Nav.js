@@ -17,6 +17,7 @@ const Nav = () => {
 				{/* <li><NavLink to="react/home/Lotto">Lotto</NavLink></li> */}
 				<li><NavLink to="react/home/Api">Api</NavLink></li>
 				{/* <li><NavLink to="react/home/Googlesheet">Googlesheet</NavLink></li> */}
+				<li><NavLink to="react/home/MySwiper">Swiper</NavLink></li>
 			</ul>
 		</nav>
 	);

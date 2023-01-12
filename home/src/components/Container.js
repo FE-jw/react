@@ -9,6 +9,7 @@ import Hook5 from '../pages/Hook5';
 import Hook6 from '../pages/Hook6';
 import Hook7 from '../pages/Hook7';
 import Lotto from '../pages/Lotto';
+import MySwiper from '../pages/MySwiper';
 import Googlesheet from '../pages/Googlesheet';
 import Api from '../pages/Api';
 import Todo from '../pages/Todo';
@@ -33,6 +34,7 @@ const Container = () => {
 					{/* <Route path="react/home/lotto" element={<Lotto />} /> */}
 					<Route path="react/home/api" element={<Api />} />
 					{/* <Route path="react/home/googlesheet" element={<Googlesheet />} /> */}
+					<Route path="react/home/myswiper" element={<MySwiper />} />
 				</Routes>
 			</div>
 		</section>
